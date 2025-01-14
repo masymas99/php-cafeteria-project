@@ -1,0 +1,237 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+.Sidenav {
+    height: 100%;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    border-right: 3px solid rgba(0, 0, 0, 0.151) ;
+    height: 130vh;
+  }
+  .Sidenav .logo{
+    font-family: "Raleway", serif;
+    color: #812222;
+    font-size: 36px;
+    margin: 20px;
+    letter-spacing: 5px;
+    font-weight:bolder;
+    text-transform: uppercase;
+}
+.nav-Links {
+    display: flex;
+    flex-direction: column;
+}
+.nav-Links a{
+    font-family: "Raleway", serif;
+    color: #812222;
+    margin: 20px;
+     padding: 30px;
+    text-decoration:none;
+}
+.nav-Links ul{
+    list-style-type: none;
+}
+.nav-Links i{
+    color: #812222;
+    text-align: left;
+}
+.header{
+    position: fixed;
+    right:30px;
+    top:5px;
+    display: flex;
+    align-items: center;
+    gap:10px;
+    padding: 10px 15px;
+    width: auto;
+    margin-left: auto;
+   z-index: 1000;
+}
+.header a{
+    text-decoration: none;
+    color: #812222;
+    font-size: 25px;
+}
+.header li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.divider{
+    position: absolute;
+    top: 60px;
+    right: 0; 
+    width:81%; 
+    height: 10px;
+    border-bottom:3px solid rgba(0, 0, 0, 0.151) ;
+    z-index: 999;
+}
+.order{
+    position: absolute;
+    top:0px;
+    left: 90px;
+    font-size: 40px;
+    font-weight: bold;
+}
+main {
+    position: absolute;
+    top: 75px;
+    left: 255px;
+    width: 1000px;
+    height: 100%;
+    background-color:#f8f8f8;
+    padding: 10px;
+}
+ .Product {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 15px;
+    padding: 10px;
+    width: 900px;
+    position: absolute;
+    top: 180px;
+    left:50px;
+    gap: 30px; 
+}
+.item {
+    background: #f8f8f8;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    width: 150px;
+  
+}
+.item img {
+    width: 130px; 
+    height: 150px;
+    border-radius: 5px;
+    margin-bottom: 5px; 
+}
+.item h2 {
+    font-size: 25px; 
+    color:rgba(155, 75, 114, 1);
+    margin: 0;
+}
+.price-label {
+    color:  rgba(124, 116, 116, 1); 
+}
+.price-value {
+    color: green; 
+}
+.product-quantity {
+    font-size: 16px;
+    color:  rgba(124, 116, 116, 1);
+    margin-top: 0px;
+}
+.product-quantity span{
+    color: rgba(138, 89, 89, 1);
+}
+h2 {
+    margin: 10px 0;
+    font-size: 25px;
+    color: rgba(124, 116, 116, 1);
+}
+hr{
+    height: 300px;
+    color: rgba(0, 0, 0, 0.151) ;
+}
+ 
+/* login info ++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.login-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: -13px;
+    right:84px;
+    height: 10%;
+    padding: 20px;
+    font-size: 12px;
+}
+   
+.login-picture{
+    background-image: url('https://img.freepik.com/free-photo/portrait-confident-young-businessman-with-his-arms-crossed_23-2148176206.jpg?t=st=1736635288~exp=1736638888~hmac=7d9e17ea740bc4a34c8ea9941af3da2538037474a6237615f86a955c8678cbce&w=360');
+    width: 40px;
+    background-size: cover;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.info {
+    background:white;
+    border-radius: 30px;
+    padding: 10px;
+    position: absolute;
+    top:60px;
+    left: 100px;
+    width: 800px; 
+    height:100px ;
+}
+.icon{
+    position: absolute;
+    top:10px;
+    left:400px;
+    color: #4CAF50;
+     font-size: 75px;
+}
+.Admin-data {
+    text-align: center; 
+    flex: 1; 
+}
+.Admin-name {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgba(155, 75, 114, 1);
+    margin: 0;
+    position: absolute;
+    top:20px;
+    left:50px;
+}
+.room {
+    font-size: 20px;
+    margin: 5px 0;
+    position: absolute;
+    top:60px;
+    left:50px;
+    color: rgba(124, 116, 116, 1);
+}
+.product-data {
+    text-align: right; 
+    flex: 1; 
+    position: absolute;
+    top:10px;
+    right:30px;
+    font-size: 20px;
+    font-weight: bold;
+    color:rgba(124, 116, 116, 1);
+}
+.price {
+    font-weight: bold;
+    color: green;
+}
+.order-date {
+    font-size: 16px;
+    color: rgba(124, 116, 116, 1);
+    text-align: right; 
+    position: absolute;
+    right:0px;
+    display: flex;
+    flex-direction: row;
+    
+}
+.order-date div{
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 4px;
+    display: flex;
+    flex-direction: row;
+}
