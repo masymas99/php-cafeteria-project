@@ -4,7 +4,7 @@ body{
     padding: 0;
 }
 a{
-    text-decoration: none;
+    text-decoration: none !important;
 }
  ul{
     list-style: none;
@@ -22,28 +22,15 @@ nav ul{
     width: 200px;
 }
 nav ul li{
-    
     width: 150px;
     display: flex;
     justify-content: flex-start;
 margin-top:20px  ;}
 
 
-nav ul li i{
-    
-    width: 5px;
-    margin-top: 3px;
-    color: rgb(86, 86, 86);
-
+nav ul li{
+    transition: all 0.6s ease;
 }
-nav ul li a{
-    margin-left: 53px;
-    display: flex;
-    color: rgb(86, 86, 86);
-    font-size: 16px;
-    font-weight: bold;
-}
-
 nav ul li:hover{
 
     background-color: #9B4B72;
@@ -63,13 +50,40 @@ nav ul li:hover a {
     color: white; 
     text-decoration: none; 
 }
+
+nav ul li i{
+    
+    width: 5px;
+    margin-top: 3px;
+    color: rgb(86, 86, 86);
+
+}
+nav ul li a{
+    margin-left: 53px;
+    display: flex;
+    color: rgb(86, 86, 86);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
 .vr1{
     height: 100%;
     position: absolute;
     top: 0;
-    left: 222px;
+    left: 223px;
     width: 1px;
     background-color: #ccc;
+}
+
+.vr3{
+    height: 90%;
+    position: absolute;
+    top: -3px;
+    right: 382px;
+    width: 1px;
+    background-color: #ccc;
+    margin: 25px;
 }
 .vr2{
     height: 100%;
@@ -88,16 +102,97 @@ hr{
 }
 
 /* main +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* ADd product */
+.Addproduct-modal {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+}
+
+.Addproduct-content{
+    background-color: white;
+    padding: 20px;
+    border-radius: 49px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 470px;
+    height: 475px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: #1930b6e7 2px solid;
+}
+.Addproduct-content h2{
+    margin-top: 50px;
+    margin-bottom: 60px;
+}
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+form input{
+    background-color: rgba(190, 189, 188, 0.307);
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #403f3f;
+    border-radius: 16px;
+    font-size: 16px;
+}
+.Addproduct-actions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+form  input[type="submit"]{
+    background-color: #9B4B72;
+    color: #ffffff;
+    font-weight: bold;
+    height: 44px;
+    width: 236px;
+    font-size: 12px;
+    border-radius: 23px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 60px;
+    margin-bottom: 25px;
+}
 
 main{
-    position: absolute;
+    position: relative;
     top: 86px;
     left: 223px;
-    width: 1033px;
+    width: 1362px;
     height: 100%;
     background-color: #f5f5f5;
     padding: 20px;
     border: #504c4c45 1px solid;
+
 }
 /* card +++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
@@ -105,7 +200,7 @@ main{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 .product-card{
     background-color: white;
@@ -152,6 +247,24 @@ left: 204px;    font-size: 16px;
     margin-top: 17px;
     margin-right: 12px;
  }
+ .product-action{
+
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+    position: relative;
+    width: 107px;
+    bottom: -24px;
+    left: 108px;
+ }
+ .product-action > *:nth-child(3){
+color: #9B4B72;
+font-size: 20px;
+ }
+ .product-action > *:nth-child(-n+2){
+    color: #736d70;
+    
+}
  .product-actions{
 
     display: flex;
@@ -166,6 +279,20 @@ left: 204px;    font-size: 16px;
     margin-top: 10px;
  }
 
+
+.btn-add-products{
+display: flex;
+align-items: center;
+justify-content: space-around;
+ 
+ background-color: #9B4B72;
+    color: #ffffff;
+    font-weight: bold;
+    height: 48px;
+    width: 236px;
+    font-size: 12px;
+    border-radius: 23px;
+}
  .add-one{
 
     color: #9B4B72;
