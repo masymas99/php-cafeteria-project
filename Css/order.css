@@ -27,17 +27,34 @@ body{
 }
 .nav-Links a{
     font-family: "Raleway", serif;
-    color: #812222;
-    margin: 20px;
-     padding: 30px;
+    color: black;
+    margin: 30px;
+     padding: 10px;
     text-decoration:none;
 }
 .nav-Links ul{
     list-style-type: none;
 }
 .nav-Links i{
-    color: #812222;
+    color: black;
     text-align: left;
+}
+.nav-Links ul li:hover{
+    background-color: #9B4B72;
+    color: white;
+    border-radius: 18px;
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-Links ul li:hover i {
+    color: white; 
+}
+.nav-Links ul li:hover a {
+    color: white; 
+    text-decoration: none; 
 }
 .header{
     position: fixed;
