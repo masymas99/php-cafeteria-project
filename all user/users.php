@@ -19,9 +19,9 @@
         <h1>C A F E T E R I A</h1>
         <nav>
             <ul>
-                <li><i  class="fa-solid fa-house" class="navitems"></i><a href="../index.php">Home</a></li>
-                <li><i class="fa-solid fa-basket-shopping"  class="navitems"></i><a href="Products.php" target="_blank">Products</a></li>
-                <li><i class="fa-solid fa-users" class="navitems"></i><a href="#">Users</a></li>
+                <li><i  class="fa-solid fa-house" class="navitems"></i><a href="../admin home/index.php">Home</a></li>
+                <li><i class="fa-solid fa-basket-shopping"  class="navitems"></i><a href="../all product/products.php" target="_blank">Products</a></li>
+                 <li><i class="fa-solid fa-users" class="navitems"></i><a href="../all user/users.php">Users</a></li>                <li><i class="fa-solid fa-users" class="navitems"></i><a href="#">Users</a></li>
                 <li><i class="fa-solid fa-receipt" class="navitems"></i><a href="#">Orders</a></li>
                 <li><i class="fa-solid fa-money-check" class="navitems"></i><a href="#">Checks</a></li>
             </ul>
@@ -47,18 +47,15 @@
             <div class="Addproduct-modal" id="Addproductmodal">
                 <div class="Addproduct-content">
                     <h2>Add New user </h2>
-                   <form action="" >
-                   <input class="form-control" type="text" placeholder="user Name" name="name" aria-label="default input example">
-                   <input class="form-control" type="Email" placeholder="Email" name="Email" aria-label="default input example">
-                   <input class="form-control" type="password" placeholder="password" name="password" aria-label="default input example">
-                   <input class="form-control" type="password" placeholder="comfirm password" name="comfirm password" aria-label="default input example">
-                   <input class="form-control" type="text" placeholder="Room Number " name="Room Number" aria-label="default input example">
-                   <input class="form-control" type="file" placeholder="product image" name="product image" aria-label="default input example">
-                   <!-- <div class="Addproduct-actions"> -->
-                    
-                    <button onclick="closeCart()" type="submit" value="Add product">Add User
-                   <!-- </div> -->
-                   </form>
+                    <form action="register.php" method="POST" enctype="multipart/form-data">
+    <input type="text" name="name" required placeholder="User Name" > 
+    <input type="email" name="email" required placeholder="User email"> 
+    <input type="password" name="password" required placeholder="User password">
+    <input type="password" name="confirm_password" required placeholder="confirm password">
+    <input type="text" name="room_number" required placeholder="User room number">
+    <input type="file" name="product_image" required >
+    <button type="submit">Submit</button>
+</form>
                    
                 </div>
             </div>
@@ -78,7 +75,9 @@
                     <div class="product-card" data-product-id="<?php echo $user['UserID']; ?>">
                         <div class="vr3"></div>
 
-                        <img src="<?php echo $user['ProfileImage']; ?>" alt="<?php echo $user['UserName']; ?>">
+                        <img src="uploads/<?php echo htmlspecialchars($user['ProfileImage']); ?>" 
+                        alt="<?php echo htmlspecialchars($user['UserName']); ?>" 
+                        style="width:150px; height:150px; border-radius:50%; object-fit:cover;"> 
                         <h2><?php echo $user['UserName']; ?></h2>
                         <h3 class="Roomnumber"> <?php echo "Room Number :  ". $user['RoomNumber']; ?></h3>
                         <div class="product-actions">
