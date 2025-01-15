@@ -16,21 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // استلام البيانات من الفورم
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // تشفير كلمة المرور
-        $confirmPassword = $_POST['confirm_password'];
-        $roomNumber = $_POST['room_number'];
-
-        // التأكد من تطابق كلمتي المرور
-        if (!password_verify($_POST['password'], $password)) {
-            die("كلمات المرور غير متطابقة.");
-        }
+        $productName = $_POST['product_name'];
+        $productPrice = $_POST['price'];
+        $productDescription = $_POST['product_description'];
 
         // التعامل مع رفع الصورة
-        if (isset($_FILES['user_image']) && $_FILES['user_image']['error'] == 0) {
+        if (isset($_FILES['product_image']) && $_FILES['product_image']['error'] == 0) {
             $uploadDir = 'uploads/'; // مسار تخزين الصور
-            $fileName = time() . "_" . basename($_FILES['user_image']['name']); // اسم فريد للصورة
+            $fileName = time() . "_" . basename($_FILES['product_image']['name']); // اسم فريد للصورة
             $targetFilePath = $uploadDir . $fileName;
 
             // التأكد من إنشاء المجلد إذا لم يكن موجودًا
@@ -39,21 +32,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             // نقل الصورة إلى المسار المحدد
-            if (move_uploaded_file($_FILES['user_image']['tmp_name'], $targetFilePath)) {
+            if (move_uploaded_file($_FILES['product_image']['tmp_name'], $targetFilePath)) {
                 // إدخال البيانات في قاعدة البيانات
-                $sql = "INSERT INTO users (UserName, Email, Password, RoomNumber, ProfileImage) 
-                        VALUES (:name, :email, :password, :room_number, :user_image)";
+                $sql = "INSERT INTO products (ProductName, Price, productDescription, ProductImage) 
+                        VALUES (:product_name, :price, :description, :product_image)";
                 
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([
-                    ':name' => $name,
-                    ':email' => $email,
-                    ':password' => $password,
-                    ':room_number' => $roomNumber,
-                    ':user_image' => $fileName
+                    ':product_name' => $productName,
+                    ':price' => $productPrice,
+                    ':description' => $productDescription,
+                    ':product_image' => $fileName
                 ]);
 
-                header("Location: users.php");
+                header("Location: products.php");
+                exit;
             } else {
                 echo "فشل في رفع الملف.";
             }

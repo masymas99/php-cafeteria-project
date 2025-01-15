@@ -20,8 +20,8 @@
         <nav>
             <ul>
                 <li><i  class="fa-solid fa-house" class="navitems"></i><a href="../adminhome/index.php">Home</a></li>
-                <li><i class="fa-solid fa-basket-shopping"  class="navitems"></i><a href="../allproduct/products.php" target="_blank">Products</a></li>
-                 <li><i class="fa-solid fa-users" class="navitems"></i><a href="../alluser/users.php">Users</a></li>                <li><i class="fa-solid fa-users" class="navitems"></i><a href="#">Users</a></li>
+                <li><i class="fa-solid fa-basket-shopping"  class="navitems"></i><a href="../allproduct/products.php"  >Products</a></li>
+                 <li><i class="fa-solid fa-users" class="navitems"></i><a href="../alluser/users.php">Users</a></li>              
                 <li><i class="fa-solid fa-receipt" class="navitems"></i><a href="#">Orders</a></li>
                 <li><i class="fa-solid fa-money-check" class="navitems"></i><a href="#">Checks</a></li>
             </ul>
@@ -36,7 +36,7 @@
     <main>
         <div class="container">
             <div class="header">
-                <h1> allusers</h1>
+                <h1> All Users</h1>
                 <a href="#" onclick="openCart()" class="btn-add-products">
                     <i class="fa-solid fa-plus"></i>
                     <h3>Add user</h3>
@@ -53,7 +53,7 @@
     <input type="password" name="password" required placeholder="User password">
     <input type="password" name="confirm_password" required placeholder="confirm password">
     <input type="text" name="room_number" required placeholder="User room number">
-    <input type="file" name="product_image" required >
+    <input type="file" name="user_image" required >
     <button type="submit">Submit</button>
 </form>
                    

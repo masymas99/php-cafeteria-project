@@ -19,9 +19,9 @@
         <h1>C A F E T E R I A</h1>
         <nav>
             <ul>
-                <li><i  class="fa-solid fa-house" class="navitems"></i><a href="../index.php">Home</a></li>
-                <li><i class="fa-solid fa-basket-shopping"  class="navitems"></i><a href="Products.php" target="_blank">Products</a></li>
-                <li><i class="fa-solid fa-users" class="navitems"></i><a href="#">Users</a></li>
+                <li><i  class="fa-solid fa-house" class="navitems"></i><a href="../adminhome/index.php">Home</a></li>
+                <li><i class="fa-solid fa-basket-shopping"  class="navitems"></i><a href="Products.php"  >Products</a></li>
+                <li><i class="fa-solid fa-users" class="navitems"></i><a href="../alluser/users.php">Users</a></li>
                 <li><i class="fa-solid fa-receipt" class="navitems"></i><a href="#">Orders</a></li>
                 <li><i class="fa-solid fa-money-check" class="navitems"></i><a href="#">Checks</a></li>
             </ul>
@@ -36,7 +36,7 @@
     <main>
         <div class="container">
             <div class="header">
-                <h1> allproduct</h1>
+                <h1> All product</h1>
                 <a href="#" onclick="openCart()" class="btn-add-products">
                     <i class="fa-solid fa-plus"></i>
                     <h3>Add Product</h3>
@@ -47,14 +47,14 @@
             <div class="Addproduct-modal" id="Addproductmodal">
                 <div class="Addproduct-content">
                     <h2>Add New Prouduct </h2>
-                   <form action="">
-                   <input class="form-control" type="text" placeholder="product name" aria-label="default input example">
-                   <input class="form-control" type="text" placeholder="price" aria-label="default input example">
-                   <input class="form-control" type="text" placeholder="product description" aria-label="default input example">
-                   <input class="form-control" type="file" placeholder="product image" aria-label="default input example">
+                   <form action="addproduct.php" method="post" enctype="multipart/form-data">
+                   <input class="form-control" type="text" placeholder="product name" name="product_name" aria-label="default input example">
+                   <input class="form-control" type="text" placeholder="price" aria-label="default input example" name="price">
+                   <input class="form-control" type="text" placeholder="product description" aria-label="default input example" name="product_description">
+                   <input class="form-control" type="file" placeholder="product image" aria-label="default input example" name="product_image">
                    <!-- <div class="Addproduct-actions"> -->
                     
-                    <input onclick="closeCart()" type="submit" value="Add product">
+                   <button type="submit" >Add product</button>
                    <!-- </div> -->
                    </form>
                    
@@ -64,19 +64,16 @@
 
 
             <div class="product">
-
                 <?php
                 require('db.php');
                 $query = "SELECT * FROM products";
                 $statment = $connection->prepare($query);
                 $statment->execute();
                 $products = $statment->fetchAll(PDO::FETCH_ASSOC);
-
                 foreach ($products as $product): ?>
                     <div class="product-card" data-product-id="<?php echo $product['ProductID']; ?>">
                         <div class="vr3"></div>
-
-                        <img src="<?php echo $product['ProductImage']; ?>" alt="<?php echo $product['ProductName']; ?>">
+                        <img src="./uploads/<?php echo $product['ProductImage']; ?>" alt="<?php echo $product['ProductName']; ?>">
                         <h2><?php echo $product['ProductName']; ?></h2>
                         <h3 class="product-price">$ <?php echo $product['Price']; ?></h3>
                         <div class="product-description"><?php echo $product['productDescription']; ?></div>
