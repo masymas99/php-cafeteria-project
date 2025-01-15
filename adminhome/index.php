@@ -17,8 +17,8 @@
         <nav>
             <ul>
             <li><i  class="fa-solid fa-house" class="navitems"></i><a href="./index.php">Home</a></li>
-            <li><i class="fa-solid fa-basket-shopping"  class="navitems"></i><a href="../all product/products.php" target="_blank">Products</a></li>
-                <li><i class="fa-solid fa-users" class="navitems"></i><a href="../all user/users.php">Users</a></li>
+            <li><i class="fa-solid fa-basket-shopping"  class="navitems"></i><a href="../allproduct/products.php" target="_blank">Products</a></li>
+                <li><i class="fa-solid fa-users" class="navitems"></i><a href="../alluser/users.php">Users</a></li>
                 <li><i class="fa-solid fa-receipt" class="navitems"></i><a href="#">Orders</a></li>
                 <li><i class="fa-solid fa-money-check" class="navitems"></i><a href="#">Checks</a></li>
             </ul>

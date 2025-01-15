@@ -36,7 +36,7 @@
     <main>
         <div class="container">
             <div class="header">
-                <h1> All product</h1>
+                <h1> allproduct</h1>
                 <a href="#" onclick="openCart()" class="btn-add-products">
                     <i class="fa-solid fa-plus"></i>
                     <h3>Add Product</h3>
