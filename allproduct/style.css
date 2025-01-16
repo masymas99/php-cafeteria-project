@@ -629,3 +629,71 @@ justify-content: space-around;
     background-color: #9B4B72;
     color: #fff;
 }
+.Editproduct-modal {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.Editproduct-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.Editproduct-content h2 {
+    margin-bottom: 20px;
+    color: #9B4B72;
+}
+
+.Editproduct-content form input,
+.Editproduct-content form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.Editproduct-content form textarea {
+    resize: none;
+    height: 80px;
+}
+
+.Editproduct-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.Editproduct-actions button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.Editproduct-actions button:first-child {
+    background-color: #ccc;
+    color: #000;
+}
+
+.Editproduct-actions button:last-child {
+    background-color: #9B4B72;
+    color: #fff;
+}
