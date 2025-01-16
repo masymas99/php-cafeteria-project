@@ -179,7 +179,6 @@ form  input[type="submit"]{
 
 
 
-
 .header{
     display: flex;
     align-items: center;
@@ -539,4 +538,94 @@ justify-content: space-around;
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
+}
+
+
+/* edit prouduct +++++++++++++++++++++++++++++++++++++++++ */
+
+/* استايل أيقونة التعديل */
+.edit-icon {
+    background-color: #9B4B72;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.edit-icon:hover {
+    background-color: #732f52;
+    transform: scale(1.1);
+}
+
+/* نافذة التعديل */
+.edit-modal {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.edit-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.edit-content h2 {
+    margin-bottom: 20px;
+    color: #9B4B72;
+}
+
+.edit-content form input,
+.edit-content form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.edit-content form textarea {
+    resize: none;
+    height: 80px;
+}
+
+.edit-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.edit-actions button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.edit-actions button:first-child {
+    background-color: #ccc;
+    color: #000;
+}
+
+.edit-actions button:last-child {
+    background-color: #9B4B72;
+    color: #fff;
 }
