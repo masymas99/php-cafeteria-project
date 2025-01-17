@@ -46,8 +46,10 @@
             </div>
 
 
-            <div class="Addproduct-modal" id="Addproductmodal">
+            <div class="Addproduct-modal modal" id="Addproductmodal">
                 <div class="Addproduct-content">
+                <button class="close-modal" onclick="closeCart()">×</button>
+
                     <h2>Add New Prouduct </h2>
                     <form action="addproduct.php" method="post" enctype="multipart/form-data">
                         <input class="form-control" type="text" placeholder="product name" name="product_name"
@@ -99,8 +101,10 @@
                 <?php endforeach; ?>
             </div>
         </div>
-        <div class="Editproduct-modal" id="Editproductmodal">
+        <div class="Editproduct-modal modal" id="Editproductmodal">
             <div class="Editproduct-content">
+            <button class="close-modal" onclick="closeCart()">×</button>
+
                 <h2>Edit Product</h2>
                 <form action="editproduct.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="product_id" id="edit_product_id">

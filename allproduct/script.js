@@ -51,8 +51,16 @@ document.querySelectorAll('.fa-edit').forEach(icon => {
 });
 
 // إغلاق النافذة عند النقر خارجها
-document.getElementById('Editproductmodal').addEventListener('click', function (e) {
-    if (e.target === this) {
-        closeEditModal();
-    }
+// document.getElementById('Editproductmodal').addEventListener('click', function (e) {
+//     if (e.target === this) {
+//         closeEditModal();
+//     }
+// });
+
+document.querySelectorAll('.modal').forEach(modal => {
+    modal.addEventListener('click', function (e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+        }
+    });
 });

@@ -161,7 +161,7 @@ form input{
     justify-content: center;
     margin-bottom: 20px;
 }
-form  input[type="submit"]{
+form  button[type="submit"]{
     background-color: #9B4B72;
     color: #ffffff;
     font-weight: bold;
@@ -174,10 +174,6 @@ form  input[type="submit"]{
     justify-content: center;
     align-items: center;
 }
-
-
-
-
 
 .header{
     display: flex;
@@ -578,11 +574,12 @@ justify-content: space-around;
     background-color: white;
     padding: 20px;
     border-radius: 12px;
-    width: 400px;
+    width: 600px;
+    height: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -593,7 +590,7 @@ justify-content: space-around;
 
 .edit-content form input,
 .edit-content form textarea {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #ccc;
@@ -696,4 +693,16 @@ justify-content: space-around;
 .Editproduct-actions button:last-child {
     background-color: #9B4B72;
     color: #fff;
+}
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+button [ type="submit"]{
+    cursor: pointer;
 }

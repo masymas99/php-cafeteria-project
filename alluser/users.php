@@ -45,8 +45,9 @@
             </div>
 
 
-            <div class="Addproduct-modal" id="Addproductmodal">
+            <div class="Addproduct-modal modal" id="Addproductmodal">
                 <div class="Addproduct-content">
+                <button class="close-modal" onclick="closeCart()">×</button>
                     <h2>Add New user </h2>
                     <form action="register.php" method="POST" enctype="multipart/form-data">
                         <input type="text" name="name" required placeholder="User Name">
@@ -75,23 +76,30 @@
                 $users = $statment->fetchAll(PDO::FETCH_ASSOC);
 
                 foreach ($users as $user): ?>
+
                     <div class="product-card" data-product-id="<?php echo $user['UserID']; ?>">
                         <div class="vr3"></div>
-                        <img src="uploads/<?php echo htmlspecialchars($user['ProfileImage']); ?>"
-                            alt="<?php echo htmlspecialchars($user['UserName']); ?>"
+                        <img src="<?php echo $user['ProfileImage']; ?>"
+                            alt="<?php echo htmlspecialchars($user['ProfileImage']); ?>"
                             style="width:150px; height:150px; border-radius:50%; object-fit:cover;">
                         <h2><?php echo $user['UserName']; ?></h2>
-                        <h3 class="Roomnumber"> <?php echo "Room Number :  " . $user['RoomNumber']; ?></h3>
+                        <div class="room-info">
+                            <h4>
+                            Room Number :   
+                            </h4>
+                            <h3 class="Roomnumber"> <?php echo $user['RoomNumber']; ?></h3>
+                        </div>
+                        
                         <div class="product-actions">
-                            <!-- <div class="add-one" data-action="add"><i class="fa-solid fa-plus"></i></div>
-        <div class="product-quantity" data-quantity="1">1</div>
-        <div class="remove-one" data-action="remove"><i class="fa-solid fa-minus"></i></div> -->
                         </div>
                         <div class="product-action">
                             <a href="#" class="edit-user">
                                 <i class="fa-solid fa-edit"></i>
                             </a>
-                            <a href="#"><i class="fa-solid fa-trash"></i></a>
+                            <a href="deleteuser.php?user_id=<?php echo $user['UserID']; ?>"
+                                onclick="return confirm('Are you sure you want to delete this product?');">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -101,22 +109,22 @@
 
         <!-- نافذة التعديل -->
         <div class="Edituser-modal modal" id="EdituserModal">
-    <div class="Edituser-content">
-        <button class="close-modal" onclick="closeEditModal()">×</button>
-        <h2>Edit User</h2>
-        <form action="edituser.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="user_id" id="edit_user_id">
-            <input type="text" name="editname" id="edit_user_name" required placeholder="User Name">
-            <input type="email" name="editemail" id="edit_user_email" required placeholder="User email">
-            <input type="password" name="editpassword" id="edit_user_password" required placeholder="User password">
-            <input type="password" name="editconfirm_password" id="edit_user_confirm_password" required placeholder="Confirm password">
-            <input type="text" name="editroom_number" id="edit_user_room_number" required placeholder="User room number">
-            <img id="edit_user_image_preview" alt="User Image Preview" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
-            <input type="file" name="edituser_image" id="edit_user_image">
-            <button type="submit">Update User</button>
-        </form>
-    </div>
-</div>
+            <div class="Edituser-content">
+                <button class="close-modal" onclick="closeEditModal()">×</button>
+                <h2>Edit User</h2>
+                <form action="edituser.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="user_id" id="edit_user_id">
+                    <input type="text" name="editname" id="edit_user_name" required placeholder="User Name">
+                    <input type="email" name="editemail" id="edit_user_email" required placeholder="User email">
+                    <input type="password" name="editpassword" id="edit_user_password" required placeholder="User password">
+                    <input type="password" name="editconfirm_password" id="edit_user_confirm_password" required placeholder="Confirm password">
+                    <input type="text" name="editroom_number" id="edit_user_room_number" required placeholder="User room number">
+                    <img id="edit_user_image_preview" alt="User Image Preview" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+                    <input type="file" name="edituser_image" id="edit_user_image">
+                    <button type="submit">Update User</button>
+                </form>
+            </div>
+        </div>
 
     </main>
 

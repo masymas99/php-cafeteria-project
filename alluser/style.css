@@ -249,9 +249,18 @@ main{
 .product-card h3{
     position: absolute;
     top: 215px;
-    left: 18px;
+    left: 141px;
     font-size: 14px;
     color: #3F813C;
+    margin-top: 12px;
+    margin-bottom: 21px;
+}
+.room-info h4{
+    position: absolute;
+    top: 215px;
+    left: 18px;
+    font-size: 14px;
+    color: #565f56;
     margin-top: 12px;
     margin-bottom: 21px;
 }
