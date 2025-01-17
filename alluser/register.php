@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $dbname = "storedb";
     $userName = "root";
     $password = "";
-    $port = "5500";
+    $port = "3307";
 
     $dsn = "$dbtype:host=$host;port=$port;dbname=$dbname";
 

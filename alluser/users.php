@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
@@ -19,9 +20,9 @@
         <h1>C A F E T E R I A</h1>
         <nav>
             <ul>
-                <li><i  class="fa-solid fa-house" class="navitems"></i><a href="../adminhome/index.php">Home</a></li>
-                <li><i class="fa-solid fa-basket-shopping"  class="navitems"></i><a href="../allproduct/products.php"  >Products</a></li>
-                 <li><i class="fa-solid fa-users" class="navitems"></i><a href="../alluser/users.php">Users</a></li>              
+                <li><i class="fa-solid fa-house" class="navitems"></i><a href="../adminhome/index.php">Home</a></li>
+                <li><i class="fa-solid fa-basket-shopping" class="navitems"></i><a href="../allproduct/products.php">Products</a></li>
+                <li><i class="fa-solid fa-users" class="navitems"></i><a href="../alluser/users.php">Users</a></li>
                 <li><i class="fa-solid fa-receipt" class="navitems"></i><a href="#">Orders</a></li>
                 <li><i class="fa-solid fa-money-check" class="navitems"></i><a href="#">Checks</a></li>
             </ul>
@@ -48,15 +49,17 @@
                 <div class="Addproduct-content">
                     <h2>Add New user </h2>
                     <form action="register.php" method="POST" enctype="multipart/form-data">
-    <input type="text" name="name" required placeholder="User Name" > 
-    <input type="email" name="email" required placeholder="User email"> 
-    <input type="password" name="password" required placeholder="User password">
-    <input type="password" name="confirm_password" required placeholder="confirm password">
-    <input type="text" name="room_number" required placeholder="User room number">
-    <input type="file" name="user_image" required >
-    <button type="submit">Submit</button>
-</form>
-                   
+                        <input type="text" name="name" required placeholder="User Name">
+                        <input type="email" name="email" required placeholder="User email">
+                        <input type="password" name="password" required placeholder="User password">
+                        <input type="password" name="confirm_password" required placeholder="confirm password">
+                        <input type="text" name="room_number" required placeholder="User room number">
+                        <input type="file" name="user_image" required>
+                        <button type="submit">Submit</button>
+                    </form>
+
+
+
                 </div>
             </div>
 
@@ -74,28 +77,46 @@
                 foreach ($users as $user): ?>
                     <div class="product-card" data-product-id="<?php echo $user['UserID']; ?>">
                         <div class="vr3"></div>
-
-                        <img src="uploads/<?php echo htmlspecialchars($user['ProfileImage']); ?>" 
-                        alt="<?php echo htmlspecialchars($user['UserName']); ?>" 
-                        style="width:150px; height:150px; border-radius:50%; object-fit:cover;"> 
+                        <img src="uploads/<?php echo htmlspecialchars($user['ProfileImage']); ?>"
+                            alt="<?php echo htmlspecialchars($user['UserName']); ?>"
+                            style="width:150px; height:150px; border-radius:50%; object-fit:cover;">
                         <h2><?php echo $user['UserName']; ?></h2>
-                        <h3 class="Roomnumber"> <?php echo "Room Number :  ". $user['RoomNumber']; ?></h3>
+                        <h3 class="Roomnumber"> <?php echo "Room Number :  " . $user['RoomNumber']; ?></h3>
                         <div class="product-actions">
                             <!-- <div class="add-one" data-action="add"><i class="fa-solid fa-plus"></i></div>
-                            <div class="product-quantity" data-quantity="1">1</div>
-                            <div class="remove-one" data-action="remove"><i class="fa-solid fa-minus"></i></div> -->
+        <div class="product-quantity" data-quantity="1">1</div>
+        <div class="remove-one" data-action="remove"><i class="fa-solid fa-minus"></i></div> -->
                         </div>
                         <div class="product-action">
-                            <i class="fa-solid fa-edit"></i>
-                            <i class="fa-solid fa-list"></i>
-                            <i class="fa-solid fa-trash"></i>
+                            <a href="#" class="edit-user">
+                                <i class="fa-solid fa-edit"></i>
+                            </a>
+                            <a href="#"><i class="fa-solid fa-trash"></i></a>
                         </div>
-                        <!-- <a href="#" class="add-to-cart" data-action="add-to-cart">Add to Cart</a> -->
                     </div>
                 <?php endforeach; ?>
             </div>
         </div>
-        
+
+
+        <!-- نافذة التعديل -->
+        <div class="Edituser-modal modal" id="EdituserModal">
+    <div class="Edituser-content">
+        <button class="close-modal" onclick="closeEditModal()">×</button>
+        <h2>Edit User</h2>
+        <form action="edituser.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="user_id" id="edit_user_id">
+            <input type="text" name="editname" id="edit_user_name" required placeholder="User Name">
+            <input type="email" name="editemail" id="edit_user_email" required placeholder="User email">
+            <input type="password" name="editpassword" id="edit_user_password" required placeholder="User password">
+            <input type="password" name="editconfirm_password" id="edit_user_confirm_password" required placeholder="Confirm password">
+            <input type="text" name="editroom_number" id="edit_user_room_number" required placeholder="User room number">
+            <img id="edit_user_image_preview" alt="User Image Preview" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+            <input type="file" name="edituser_image" id="edit_user_image">
+            <button type="submit">Update User</button>
+        </form>
+    </div>
+</div>
 
     </main>
 
