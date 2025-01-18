@@ -1,0 +1,397 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.Sidenav {
+    height: 100%;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 3px solid rgba(0, 0, 0, 0.151);
+    height: 130vh;
+}
+
+.Sidenav .logo {
+    font-family: "Raleway", serif;
+    color: #812222;
+    font-size: 36px;
+    margin: 20px;
+    letter-spacing: 3px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.nav-Links {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-Links a {
+    font-family: "Raleway", serif;
+    color: black;
+    margin: 30px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.nav-Links ul {
+    list-style-type: none;
+}
+
+.nav-Links ul {
+    list-style-type: none;
+}
+
+.nav-Links i {
+    color: black;
+    text-align: left;
+}
+
+.nav-Links ul li:hover {
+    background-color: #9B4B72;
+    color: white;
+    border-radius: 18px;
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-Links ul li:hover i {
+    color: white;
+}
+
+.nav-Links ul li:hover a {
+    color: white;
+    text-decoration: none;
+}
+
+.header {
+    position: fixed;
+    right: 30px;
+    top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    width: auto;
+    margin-left: auto;
+    z-index: 1000;
+}
+
+.header a {
+    text-decoration: none;
+    color: #812222;
+    font-size: 25px;
+}
+
+.header li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.divider {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 81%;
+    height: 10px;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.151);
+    z-index: 999;
+}
+
+.check {
+    position: absolute;
+    top: 0px;
+    left: 90px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.filter_check {
+    position: absolute;
+    bottom: 490px;
+    right: 500px;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgba(11, 11, 11, 0.54);
+}
+
+/* main +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+main {
+    position: absolute;
+    top: 70px;
+    left: 250px;
+    width: 1000px;
+    height: 100%;
+    background-color: #f8f8f8;
+}
+
+/* login info ++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+.login-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: -13px;
+    right: 84px;
+    height: 10%;
+    padding: 20px;
+    font-size: 12px;
+}
+
+.login-info h2 {
+    margin: 10px 0;
+    font-size: 25px;
+    color: rgba(124, 116, 116, 1);
+    font-weight: bold;
+}
+
+.login-picture {
+    background-image: url('https://img.freepik.com/free-photo/portrait-confident-young-businessman-with-his-arms-crossed_23-2148176206.jpg?t=st=1736635288~exp=1736638888~hmac=7d9e17ea740bc4a34c8ea9941af3da2538037474a6237615f86a955c8678cbce&w=360');
+    width: 40px;
+    background-size: cover;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+
+}
+.info {
+    background: #f8f8f8;
+    border-radius: 30px;
+    padding: 10px;
+    position: absolute;
+    top: 180px;
+    left: 100px;
+    width: 800px;
+    height: 100px;
+}
+
+.Admin-data {
+    text-align: center;
+    flex: 1;
+}
+
+.Admin-name {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgba(155, 75, 114, 1);
+    margin: 0;
+    position: absolute;
+    top: 20px;
+    left: 50px;
+}
+
+.room {
+    font-size: 20px;
+    margin: 5px 0;
+    position: absolute;
+    top: 60px;
+    left: 50px;
+    font-weight: bold;
+    color: rgba(124, 116, 116, 1);
+}
+
+.product-data {
+    text-align: right;
+    flex: 1;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(124, 116, 116, 1);
+}
+
+.price {
+    font-weight: bold;
+    color: green;
+}
+
+.order-date {
+    font-size: 16px;
+    color: rgba(124, 116, 116, 1);
+    text-align: right;
+    position: absolute;
+    right: 0px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.order-date div {
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 4px;
+    display: flex;
+    flex-direction: row;
+}
+
+.Product {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 15px;
+    padding: 10px;
+    width: 900px;
+    position: absolute;
+    top: 250px;
+    left: 100px;
+    gap: 30px;
+}
+
+.item {
+    background: #f8f8f8;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+
+}
+
+.item img {
+    width: 130px;
+    height: 150px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.item h2 {
+    font-size: 25px;
+    font-weight: bold;
+    color: rgba(155, 75, 114, 1);
+    margin: 0;
+}
+
+.price-label {
+    color: rgba(124, 116, 116, 1);
+    font-size: 20px;
+}
+
+.price-value {
+    color: green;
+    font-size: 18px;
+}
+
+.product-quantity {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba(124, 116, 116, 1);
+    margin-top: 0px;
+}
+
+.product-quantity span {
+    color: rgba(138, 89, 89, 1);
+}
+
+h2 {
+    margin: 10px 0;
+    font-size: 25px;
+    color: rgba(124, 116, 116, 1);
+}
+
+hr {
+    height: 300px;
+    color: rgba(0, 0, 0, 0.151);
+}
+
+/*  ============================= DropDown =================*/
+.Dropdown {
+    width: 70%;
+    position: absolute;
+    right: 100px;
+    bottom: 450px;
+    height: 50px;
+}
+
+.cal1 {
+    background-color: #9B4B72;
+    width: 190px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    position: absolute;
+    right: 10px;
+    top: 9px;
+
+}
+
+.cal2 {
+    width: 190px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    position: absolute;
+    right: 9px;
+    top: 10px;
+
+}
+
+.bg1 {
+    background-color: rgba(217, 217, 217, 1);
+    height: 55px;
+    width: 240px;
+    border-radius: 50px;
+    position: absolute;
+    right: 350px;
+    top: 10px;
+}
+
+.bg2 {
+    background-color: rgba(217, 217, 217, 1);
+    height: 55px;
+    width: 240px;
+    border-radius: 50px;
+    position: absolute;
+    right: 100px;
+    top: 9px;
+}
+
+.test {
+    background-color: rgba(217, 217, 217, 1);
+    height: 55px;
+    width: 240px;
+    border-radius: 50px;
+    position: absolute;
+    right: 600px;
+    top: 10px;
+}
+
+.filter-container button,
+.filter-container .form-select {
+    background-color: rgba(244, 236, 236, 1);
+
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.filter-container .form-control {
+    border: 1px solid #cccccc00;
+    border-radius: 20px;
+    padding: 10px 15px;
+}
+
+.filter-container .form-control:focus {
+    box-shadow: none;
+    border-color: #a38181;
+}
+
+.filter-container button:hover {
+    background-color: rgba(217, 217, 217, 1);
+}
