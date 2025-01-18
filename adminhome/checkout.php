@@ -24,13 +24,22 @@ try {
     $connection->beginTransaction();
 
     try {
-        // إنشاء الطلب الرئيسي
+        // إنشاء الطلب الرئيسي أولاً في جدول order
         $orderStmt = $connection->prepare('
-            INSERT INTO `order` (UserID, ProductID, Quantity) 
-            VALUES (:UserID, :ProductID, :Quantity)
+            INSERT INTO `order` (UserID, DateOrder) 
+            VALUES (:UserID, NOW())
         ');
 
-        // إدخال كل منتج
+        $orderStmt->execute([':UserID' => $userId]);
+        $orderId = $connection->lastInsertId();
+
+        // إضافة المنتجات إلى جدول order_items
+        $itemStmt = $connection->prepare('
+            INSERT INTO order_items (OrderID, ProductID, Quantity) 
+            VALUES (:OrderID, :ProductID, :Quantity)
+        ');
+
+        // إضافة كل منتج إلى الطلب
         foreach ($productIds as $index => $productId) {
             $productId = intval($productId);
             $quantity = intval($quantities[$index]);
@@ -39,22 +48,38 @@ try {
                 throw new Exception('Invalid product data');
             }
 
-            $success = $orderStmt->execute([
-                ':UserID' => $userId,
+            // إضافة المنتج إلى order_items
+            $success = $itemStmt->execute([
+                ':OrderID' => $orderId,
                 ':ProductID' => $productId,
                 ':Quantity' => $quantity
             ]);
 
             if (!$success) {
-                throw new Exception('Failed to insert order');
+                throw new Exception('Failed to insert order item');
             }
         }
+
+        // حساب وتحديث السعر الإجمالي للطلب
+        $updateTotalStmt = $connection->prepare('
+            UPDATE `order` o
+            SET TotalPrice = (
+                SELECT SUM(oi.Quantity * p.Price)
+                FROM order_items oi
+                JOIN products p ON oi.ProductID = p.ProductID
+                WHERE oi.OrderID = o.OrderID
+            )
+            WHERE o.OrderID = :OrderID
+        ');
+
+        $updateTotalStmt->execute([':OrderID' => $orderId]);
 
         $connection->commit();
         
         echo json_encode([
             'success' => true,
-            'message' => 'Orders placed successfully'
+            'message' => 'Order placed successfully',
+            'orderId' => $orderId
         ]);
 
     } catch (Exception $e) {

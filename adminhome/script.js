@@ -140,7 +140,12 @@ document.addEventListener("DOMContentLoaded", function () {
             method: 'POST',
             body: formData
         })
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
         .then(text => {
             try {
                 const data = JSON.parse(text);
