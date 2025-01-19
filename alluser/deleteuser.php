@@ -1,5 +1,5 @@
 <?php
-require('db.php');
+require('../db.php');
 
 if (isset($_GET['user_id'])) {
     $userId = $_GET['user_id'];

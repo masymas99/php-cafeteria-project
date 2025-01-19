@@ -2,7 +2,7 @@
 header('Content-Type: application/json; charset=utf-8');
 
 try {
-    require_once('db.php');
+    require_once('../db.php');
     
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         throw new Exception('Method not allowed');

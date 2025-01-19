@@ -1,12 +1,9 @@
 <?php
+
+require('../db.php');
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // بيانات الاتصال بقاعدة البيانات
-    $dbtype = "mysql";
-    $host = "localhost";
-    $dbname = "storedb";
-    $userName = "root";
-    $password = "";
-    $port = "8000";
+
 
     $dsn = "$dbtype:host=$host;port=$port;dbname=$dbname";
 

@@ -1,12 +1,14 @@
 <?php
+require('../db.php');
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // بيانات الاتصال بقاعدة البيانات
-    $dbtype = "mysql";
-    $host = "localhost";
-    $dbname = "storedb";
-    $userName = "root";
-    $password = "";
-    $port = "8000";
+    // $dbtype = "mysql";
+    // $host = "localhost";
+    // $dbname = "storedb";
+    // $userName = "root";
+    // $password = "";
+    // $port = "8005";
 
     $dsn = "$dbtype:host=$host;port=$port;dbname=$dbname";
 
@@ -18,12 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // استلام البيانات من الفورم
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // تشفير كلمة المرور
+        $password = $_POST['password'];
         $confirmPassword = $_POST['confirm_password'];
         $roomNumber = $_POST['room_number'];
 
         // التأكد من تطابق كلمتي المرور
-        if (!password_verify($_POST['password'], $password)) {
+        if ($password !== $confirmPassword) {
             die("كلمات المرور غير متطابقة.");
         }
 

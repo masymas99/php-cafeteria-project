@@ -73,7 +73,7 @@
 
             <div class="product">
                 <?php
-                require('db.php');
+                require('../db.php');
                 $query = "SELECT * FROM products";
                 $statment = $connection->prepare($query);
                 $statment->execute();

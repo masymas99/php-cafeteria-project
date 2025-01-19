@@ -1,5 +1,5 @@
 <?php
-require('db.php');
+require('../db.php');
 
 if (isset($_GET['product_id'])) {
     $productId = $_GET['product_id'];

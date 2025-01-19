@@ -69,7 +69,7 @@
             <div class="product">
 
                 <?php
-                require('db.php');
+                require('../db.php');
                 $query = "SELECT * FROM users";
                 $statment = $connection->prepare($query);
                 $statment->execute();
@@ -79,7 +79,7 @@
 
                     <div class="product-card" data-product-id="<?php echo $user['UserID']; ?>">
                         <div class="vr3"></div>
-                        <img src="<?php echo $user['ProfileImage']; ?>"
+                        <img src="./uploads/<?php echo $user['ProfileImage']; ?>"
                             alt="<?php echo htmlspecialchars($user['ProfileImage']); ?>"
                             style="width:150px; height:150px; border-radius:50%; object-fit:cover;">
                         <h2><?php echo $user['UserName']; ?></h2>

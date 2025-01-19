@@ -36,7 +36,7 @@
             <h1>Admin Menu</h1>
             <div class="product">
                 <?php
-                require('db.php');
+                require('../db.php');
                 $query = "SELECT * FROM products";
                 $statment = $connection->prepare($query);
                 $statment->execute();
@@ -72,7 +72,7 @@
             <select class="form-select" aria-label="Default select example">
                 <option selected>Open this select user</option>
 
-                <?php require('db.php');
+                <?php require('../db.php');
                 $query = "SELECT * FROM users";
                 $statment = $connection->prepare($query);
                 $statment->execute();
