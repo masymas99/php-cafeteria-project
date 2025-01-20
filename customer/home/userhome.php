@@ -1,3 +1,22 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../login.php");
+    exit();
+}
+
+// جلب معلومات المستخدم من قاعدة البيانات
+require('../../db.php');
+$stmt = $connection->prepare("SELECT UserName, RoomNumber FROM users WHERE UserID = ?");
+$stmt->execute([$_SESSION['user_id']]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// تخزين معلومات المستخدم في الجلسة إذا لم تكن موجودة
+if (!isset($_SESSION['username'])) {
+    $_SESSION['username'] = $user['UserName'];
+    $_SESSION['room_number'] = $user['RoomNumber'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@200..1000&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <title>user home</title>
+    <title>User Dashboard</title>
 </head>
 
 <body>
@@ -17,9 +36,9 @@
         <h1>C A F E T E R I A</h1>
         <nav>
             <ul>
-                <li><i class="fa-solid fa-house" class="navitems"></i><a href="./index.php">Home</a></li>
-                <li><i class="fa-solid fa-basket-shopping" class="navitems"></i><a href="../allproduct/products.php"  >my orders</a></li>
-        
+                <li><i class="fa-solid fa-house"></i><a href="./userhome.php">Home</a></li>
+                <li><i class="fa-solid fa-receipt"></i><a href="./myorders.php">My Orders</a></li>
+                <li><i class="fa-solid fa-right-from-bracket"></i><a href="../logout.php">Logout</a></li>
             </ul>
         </nav>
 
@@ -31,28 +50,30 @@
 
     <main>
         <div class="container">
-            <h1>Our Menu</h1>
-            <div class="product">
+            <div class="user-info">
+                <h2>Welcome, <?php echo ($_SESSION['username']); ?></h2>
+                <p>Room: <?php echo ($_SESSION['room_number']); ?></p>
+            </div>
+
+            <div class="products">
                 <?php
-                require('../../db.php');
                 $query = "SELECT * FROM products";
-                $statment = $connection->prepare($query);
-                $statment->execute();
-                $products = $statment->fetchAll(PDO::FETCH_ASSOC);
+                $stmt = $connection->prepare($query);
+                $stmt->execute();
+                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 foreach ($products as $product): ?>
-
                     <div class="product-card" data-product-id="<?php echo $product['ProductID']; ?>">
                         <img src="../../allproduct/uploads/<?php echo $product['ProductImage']; ?>" alt="<?php echo $product['ProductName']; ?>">
                         <h2><?php echo $product['ProductName']; ?></h2>
-                        <h3 class="product-price">$ <?php echo $product['Price']; ?></h3>
+                        <h3 class="product-price">$<?php echo $product['Price']; ?></h3>
                         <div class="product-description"><?php echo $product['productDescription']; ?></div>
                         <div class="product-actions">
                             <div class="add-one" data-action="add"><i class="fa-solid fa-plus"></i></div>
-                            <div class="product-quantity" data-quantity="1">1</div>
+                            <div class="product-quantity">1</div>
                             <div class="remove-one" data-action="remove"><i class="fa-solid fa-minus"></i></div>
                         </div>
-                        <a href="#" class="add-to-cart" data-action="add-to-cart">Add to Cart</a>
+                        <a href="#" class="add-to-cart">Add to Cart</a>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -65,13 +86,13 @@
     </div>
 
     <div class="cart">
-        <div class="cart-items" id="cart-items">
-        </div>
+        <h2>My Cart</h2>
+        <div class="cart-items" id="cart-items"></div>
         <div class="cart-total">
-            <h2>Total</h2>
-            <h3 class="product-price" id="cart-total-price">$ 0</h3>
+            <h3>Total</h3>
+            <h3 class="product-price" id="cart-total-price">$0</h3>
         </div>
-        <a href="#" class="checkout">Checkout</a>
+        <a href="#" class="checkout">Place Order</a>
     </div>
     <template id="cart-item-template">
         <div class="cart-item" data-cart-item-id="">
@@ -85,6 +106,10 @@
             </div>
         </div>
     </template>
+    <script>
+        // تخزين معرف المستخدم من PHP إلى JavaScript
+        const userId = <?php echo $_SESSION['user_id']; ?>;
+    </script>
     <script src="script.js"></script>
 </body>
 

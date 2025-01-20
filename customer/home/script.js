@@ -1,11 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let selectedUserId = null;
-
-    // استمع لتغيير المستخدم المحدد
-    // document.querySelector('.form-select').addEventListener('change', function(e) {
-    //     selectedUserId = e.target.value !== "Open this select user" ? e.target.value : null;
-    // });
 
     function updateCartUI() {
         const cartContainer = document.getElementById("cart-items");
@@ -33,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
         cartTotalPrice.textContent = `$${total.toFixed(2)}`;
         
-        // حفظ السلة في Local Storage
         localStorage.setItem("cart", JSON.stringify(cart));
     }
 
@@ -70,13 +63,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let quantity = 1;
 
-        // زيادة الكمية
         addOneBtn.addEventListener("click", function () {
             quantity++;
             quantityDisplay.textContent = quantity;
         });
 
-        // تقليل الكمية
         removeOneBtn.addEventListener("click", function () {
             if (quantity > 1) {
                 quantity--;
@@ -84,11 +75,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        // إضافة المنتج للسلة
         addToCartBtn.addEventListener("click", function () {
             const productId = productCard.dataset.productId;
             const productName = productCard.querySelector("h2").textContent;
-            const productPrice = parseFloat(productCard.querySelector(".product-price").textContent.replace("$", "").trim());
+            const productPrice = parseFloat(productCard.querySelector(".product-price").textContent.replace("$", ""));
             const productImage = productCard.querySelector("img").src;
 
             const existingItem = cart.find(item => item.id === productId);
@@ -105,47 +95,33 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             }
 
-            // إعادة تعيين الكمية
             quantity = 1;
             quantityDisplay.textContent = quantity;
             updateCartUI();
         });
     });
 
-    // إضافة مستمع لزر Checkout
+    // معالجة زر Place Order
     document.querySelector('.checkout').addEventListener('click', function(e) {
         e.preventDefault();
-        
-        if (!selectedUserId) {
-            alert("Please select a user first!");
-            return;
-        }
 
         if (cart.length === 0) {
             alert("Cart is empty!");
             return;
         }
 
-        // تحضير البيانات للإرسال
         const formData = new FormData();
-        formData.append('UserID', selectedUserId);
         
         cart.forEach((item, index) => {
             formData.append(`ProductID[${index}]`, item.id);
             formData.append(`Quantity[${index}]`, item.quantity);
         });
 
-        // إرسال الطلب
-        fetch('checkout.php', {
+        fetch('place_order.php', {
             method: 'POST',
             body: formData
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.text();
-        })
+        .then(response => response.text())
         .then(text => {
             try {
                 const data = JSON.parse(text);
@@ -168,6 +144,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // تحديث واجهة السلة عند تحميل الصفحة
     updateCartUI();
 });
