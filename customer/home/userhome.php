@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@200..1000&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <title>Admin Dashboard</title>
+    <title>user home</title>
 </head>
 
 <body>
@@ -18,10 +18,8 @@
         <nav>
             <ul>
                 <li><i class="fa-solid fa-house" class="navitems"></i><a href="./index.php">Home</a></li>
-                <li><i class="fa-solid fa-basket-shopping" class="navitems"></i><a href="../allproduct/products.php"  >Products</a></li>
-                <li><i class="fa-solid fa-users" class="navitems"></i><a href="../alluser/users.php">Users</a></li>
-                <li><i class="fa-solid fa-receipt" class="navitems"></i><a href="#">Orders</a></li>
-                <li><i class="fa-solid fa-money-check" class="navitems"></i><a href="#">Checks</a></li>
+                <li><i class="fa-solid fa-basket-shopping" class="navitems"></i><a href="../allproduct/products.php"  >my orders</a></li>
+        
             </ul>
         </nav>
 
@@ -33,10 +31,10 @@
 
     <main>
         <div class="container">
-            <h1>Admin Menu</h1>
+            <h1>Our Menu</h1>
             <div class="product">
                 <?php
-                require('db.php');
+                require('../../db.php');
                 $query = "SELECT * FROM products";
                 $statment = $connection->prepare($query);
                 $statment->execute();
@@ -45,7 +43,7 @@
                 foreach ($products as $product): ?>
 
                     <div class="product-card" data-product-id="<?php echo $product['ProductID']; ?>">
-                        <img src="../allproduct/uploads/<?php echo $product['ProductImage']; ?>" alt="<?php echo $product['ProductName']; ?>">
+                        <img src="../../allproduct/uploads/<?php echo $product['ProductImage']; ?>" alt="<?php echo $product['ProductName']; ?>">
                         <h2><?php echo $product['ProductName']; ?></h2>
                         <h3 class="product-price">$ <?php echo $product['Price']; ?></h3>
                         <div class="product-description"><?php echo $product['productDescription']; ?></div>
@@ -67,22 +65,6 @@
     </div>
 
     <div class="cart">
-        <div class="cart-for-user">
-            <h3>Cart for</h3>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select user</option>
-
-                <?php require('db.php');
-                $query = "SELECT * FROM users";
-                $statment = $connection->prepare($query);
-                $statment->execute();
-                $users = $statment->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($users as $user): ?>
-                    <option value="<?php echo $user['UserID']; ?>"><?php echo $user['UserName']; ?></option>
-                <?php endforeach;
-                ?>
-            </select>
-        </div>
         <div class="cart-items" id="cart-items">
         </div>
         <div class="cart-total">
