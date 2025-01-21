@@ -83,12 +83,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-sizing: border-box;
         }
         form {
-            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 320px;
             height: 360px;
             background-color: #fff;
             padding: 20px;
             border-radius: 50px;
-            display: inline-block;
             border: 1px solid #000;
             box-shadow: 0px 0px 10px 5px rgba(188, 10, 200, 0.3);
             margin: 0 auto;
@@ -141,12 +144,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             text-align: center;
             margin-top: 10px; 
         }
+        a {
+            position: relative;
+            top: -15px;
+            font-size: 12px;
+left: -108px;
+            text-decoration: none;
+            color: #221C45FF;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <form action="login.php" method="post">
-            <h2>CAFETERIA</h2>
+            <h2>C A F E T E R I A</h2>
             <input type="email" name="Email" placeholder="Email" value="<?php echo isset($_POST['Email']) ? htmlspecialchars($_POST['Email']) : ''; ?>" required>
             <input type="password" name="Password" placeholder="Password" required>
             <a href="forget-password.php">Forget Password ?</a>

@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+}
+
+aside {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+aside h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #9B4B72;
+    margin-bottom: 30px;
+}
+
+aside nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside nav ul li {
+    margin: 15px;
+}
+
+aside nav ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+}
+
+aside nav ul li a i {
+    width: 25px;
+    color: #666;
+}
+
+aside nav ul li a:hover {
+    color:rgb(206, 197, 201);
+}
+
+main {
+    position: relative;
+
+    left: 200px;
+    width: 1097px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin-left: 0px;
+    height: 100%;
+
+}
+
+.orders-container {
+    display: block;
+    gap: 20px;
+}
+
+.order-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 28px;
+    width: 100%; 
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    margin-top: 25px;
+}
+
+.order-card h3{
+    font-size: 18px;
+    color: #9B4B72;
+    margin: 0 0 10px 0;
+}
+.orderinfo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.order-card p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #3F813C;
+}
+
+.order-items {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 30px;
+    margin-top: 15px;
+}
+
+.order-item {
+    display: flex;
+    flex-direction: column;
+     width:60%;  
+    padding: 20px;
+    border-right: 2px solid #ddd; 
+    box-sizing: border-box;
+}
+
+.order-items .order-item:last-child {
+    border-right: none;
+}
+
+.order-item img {
+  
+    width: 40%;
+    height: 200px;
+    /* object-fit: cover; */
+    border-radius: 30px;
+}
+.item{
+    background-color: #aba9a988;
+    border-radius: 16px;
+    padding: 10px;
+    width: 160px;
+    text-align: start;
+    margin-bottom: 16px;
+}
+.item h4 {
+    font-size: 16px;
+    color: #9B4B72;
+}
+
+.item p {
+    font-weight: 600;
+    margin: 5px 0;
+    font-size: 14px;
+    color: #442828;
+}
+
+.cancel-btn:hover {
+    background-color: rgb(182, 68, 123);
+}
+
+.total-price {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #5cb85c;
+    margin-top: 20px;
+}

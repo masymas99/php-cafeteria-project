@@ -49,7 +49,7 @@ if (!isset($_SESSION['username'])) {
     <div class="vr2"></div>
     <div class="user-info">
                 <h2>Welcome, <?php echo ($_SESSION['username']); ?></h2>
-                <p>Room: <?php echo ($_SESSION['room_number']); ?></p>
+                <p>your Room Number: <?php echo ($_SESSION['room_number']); ?></p>
             </div>
     <hr>
 
