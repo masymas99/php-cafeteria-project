@@ -7,14 +7,16 @@ if (!isset($_SESSION['user_id'])) {
 
 // جلب معلومات المستخدم من قاعدة البيانات
 require('../../db.php');
-$stmt = $connection->prepare("SELECT UserName, RoomNumber FROM users WHERE UserID = ?");
+$stmt = $connection->prepare("SELECT UserName, RoomNumber, ProfileImage FROM users WHERE UserID = ?");
 $stmt->execute([$_SESSION['user_id']]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
 // تخزين معلومات المستخدم في الجلسة إذا لم تكن موجودة
 if (!isset($_SESSION['username'])) {
     $_SESSION['username'] = $user['UserName'];
     $_SESSION['room_number'] = $user['RoomNumber'];
+    $_SESSION['profile_image'] = $user['ProfileImage'];
 }
 ?>
 <!DOCTYPE html>
@@ -45,15 +47,15 @@ if (!isset($_SESSION['username'])) {
         <div class="vr1"></div>
     </aside>
     <div class="vr2"></div>
-
-    <hr>
-
-    <main>
-        <div class="container">
-            <div class="user-info">
+    <div class="user-info">
                 <h2>Welcome, <?php echo ($_SESSION['username']); ?></h2>
                 <p>Room: <?php echo ($_SESSION['room_number']); ?></p>
             </div>
+    <hr>
+
+    <main>
+    
+        
 
             <div class="products">
                 <?php
@@ -77,13 +79,16 @@ if (!isset($_SESSION['username'])) {
                     </div>
                 <?php endforeach; ?>
             </div>
-        </div>
     </main>
+   
 
     <div class="login-info">
-        <div class="login-picture"></div>
-        <h2>Admin</h2>
-    </div>
+    <div class="login-picture">
+            <img src="../../alluser/uploads/<?php echo htmlspecialchars($_SESSION['profile_image']); ?>" alt="User Profile Picture" width="50" height="50" style="border-radius: 50%; object-fit: cover;">
+        </div>
+        
+        <h2> <?php echo ($_SESSION['username']); ?></h2> 
+       </div>
 
     <div class="cart">
         <h2>My Cart</h2>

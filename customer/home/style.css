@@ -97,10 +97,12 @@ hr{
 /* main +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 main{
+   
     position: absolute;
+    display: flex;
     top: 86px;
-    left: 223px;
-    width: 1033px;
+    left: 221px;
+    width: 1031px;
     background-color: #f5f5f5;
     padding: 20px;
     border: #504c4c45 1px solid;
@@ -109,6 +111,7 @@ main{
 
 .product{
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -219,7 +222,9 @@ left: 204px;    font-size: 16px;
     align-items: center;
  }
 /* login info ++++++++++++++++++++++++++++++++++++++++++++++++ */
-
+.user-info{
+    height: 100px;
+}
 .login-info{
     display: flex;
     justify-content: space-between;
@@ -231,15 +236,23 @@ left: 204px;    font-size: 16px;
     padding: 20px;
     font-size: 12px;
     
+    
 
 }
+.login-info h2{
+position: relative;
+    left: 25px;
+    top: 10px;
+}
 .login-picture{
+    position: relative;
     background-image: url('https://img.freepik.com/free-photo/portrait-confident-young-businessman-with-his-arms-crossed_23-2148176206.jpg?t=st=1736635288~exp=1736638888~hmac=7d9e17ea740bc4a34c8ea9941af3da2538037474a6237615f86a955c8678cbce&w=360');
     width: 40px;
     background-size: cover;
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
+    top: 10px;
 }
 
 
@@ -247,9 +260,9 @@ left: 204px;    font-size: 16px;
 
 .cart{
     position: fixed;
-    top: 96px;
-    height: 89%;
-    right: 0;
+    top: 90px;
+    height: 92%;
+    right: 0px;
     overflow-y: hidden;
     overflow-x: hidden;
     scroll-behavior: smooth;
@@ -413,3 +426,120 @@ left: 204px;    font-size: 16px;
     align-items: center;
     margin-bottom: 30px;
 }
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+}
+
+aside {
+    position: fixed;
+    width: 181px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+aside h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #9B4B72;
+    margin-bottom: 30px;
+}
+
+aside nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside nav ul li {
+    margin-bottom: 20px;
+}
+
+aside nav ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+
+aside nav ul li a i {
+    margin-right: 10px;
+}
+
+aside nav ul li a:hover {
+    color: #9B4B72;
+}
+
+
+
+.orders-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.order-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: calc(25% - 20px);
+    box-sizing: border-box;
+}
+
+.order-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.order-card h2 {
+    font-size: 18px;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.order-card p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.cancel-btn {
+    background-color: #d9534f;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cancel-btn:hover {
+    background-color: #c9302c;
+}
+
+.total-price {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: #5cb85c;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

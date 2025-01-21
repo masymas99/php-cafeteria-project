@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <title>Checks</title>
 </head>
+
 <body>
     <aside>
         <h1>C A F E T E R I A</h1>
@@ -21,20 +23,19 @@
         </nav>
         <div class="vr1"></div>
     </aside>
-
     <main>
         <div class="container">
             <h1>Checks</h1>
-            
+            <h2>Filter Checks</h2>
             <!-- فلاتر البحث -->
             <div class="filters">
                 <form method="GET" class="filter-form">
                     <div class="filter-group">
                         <label for="user">User:</label>
-                        <select name="user" id="user">
+                        <select class="user" name="user" id="user">
                             <option value="">All Users</option>
                             <?php
-                            require_once('../adminhome/db.php');
+                            require_once('../db.php');
                             $userQuery = "SELECT DISTINCT u.UserID, u.UserName FROM users u JOIN `order` o ON u.UserID = o.UserID ORDER BY u.UserName";
                             $userStmt = $connection->query($userQuery);
                             while ($user = $userStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -47,21 +48,21 @@
 
                     <div class="filter-group">
                         <label for="date_from">From:</label>
-                        <input type="date" name="date_from" id="date_from" 
-                               value="<?php echo $_GET['date_from'] ?? ''; ?>">
+                        <input class="datefrom" type="date" name="date_from" id="date_from"
+                            value="<?php echo $_GET['date_from'] ?? ''; ?>">
                     </div>
 
                     <div class="filter-group">
                         <label for="date_to">To:</label>
-                        <input type="date" name="date_to" id="date_to"
-                               value="<?php echo $_GET['date_to'] ?? ''; ?>">
+                        <input class="dateto" type="date" name="date_to" id="date_to"
+                            value="<?php echo $_GET['date_to'] ?? ''; ?>">
                     </div>
 
                     <button type="submit" class="filter-btn">Filter</button>
                 </form>
             </div>
 
-            <!-- عرض الفواتير -->
+      
             <div class="checks-container">
                 <?php
                 // بناء استعلام SQL
@@ -104,7 +105,7 @@
                 if (!empty($conditions)) {
                     $query .= " WHERE " . implode(" AND ", $conditions);
                 }
-
+                
                 $query .= " GROUP BY o.OrderID ORDER BY o.DateOrder DESC";
 
                 $stmt = $connection->prepare($query);
@@ -112,29 +113,45 @@
                 $checks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 foreach ($checks as $check): ?>
-                    <div class="check-card">
-                        <div class="check-header">
-                            <div class="user-info">
-                                <h3><?php echo htmlspecialchars($check['UserName']); ?></h3>
-                                <p>Room: <?php echo htmlspecialchars($check['RoomNumber']); ?></p>
-                            </div>
-                            <div class="order-info">
-                                <p>Order #<?php echo $check['OrderID']; ?></p>
-                                <p class="date"><?php echo date('Y-m-d H:i', strtotime($check['DateOrder'])); ?></p>
-                            </div>
-                        </div>
-                        
-                        <div class="check-details">
-                            <pre><?php echo htmlspecialchars($check['OrderDetails']); ?></pre>
-                        </div>
-                        
-                        <div class="check-total">
-                            <h4>Total: $<?php echo number_format($check['TotalPrice'], 2); ?></h4>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+                <div class="container-1">
+    <div class="check-card">
+        <div class="check-header">
+            <div class="user-info">
+                <h3><?php echo htmlspecialchars($check['UserName']); ?></h3>
+                <p>Room: <?php echo htmlspecialchars($check['RoomNumber']); ?></p> 
+            </div>
+            <div class="order-info">
+             <p>Order #<?php echo $check['OrderID']; ?></p> 
+                <p class="date"><?php echo date('Y-m-d H:i', strtotime($check['DateOrder'])); ?></p> <br>
+            <h4>Total: $<?php echo number_format($check['TotalPrice'], 2); ?></h4> <br> <br>
+            <a class="payment" onclick="return confirm('Are you sure you want to delete this product?');" href="deleteOrder.php?order_Id=<?php echo $check['OrderID']?>">Payment</a>
+           
             </div>
         </div>
+        <div class="check-details">
+            <pre><?php echo htmlspecialchars($check['OrderDetails']); ?></pre>
+        </div>
+    </div>
+</div>
+                <?php endforeach; ?>  
+            </div>
+        </div>
+     </div>
     </main>
+    <div class="login-info">
+    <?php
+require('../db.php');
+
+$query = "SELECT ProfileImage FROM users WHERE UserID=12";
+$stmt = $connection->prepare($query);
+$stmt->execute();
+$admin = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+
+<div class="login-picture">
+<img src="../alluser/uploads/ <?php echo $admin['ProfileImage']; ?>" alt="Profile">
+</div>  
+      <h2>Admin</h2>
+    </div>
 </body>
-</html> 
+</html>

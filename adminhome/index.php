@@ -20,8 +20,8 @@
                 <li><i class="fa-solid fa-house" class="navitems"></i><a href="./index.php">Home</a></li>
                 <li><i class="fa-solid fa-basket-shopping" class="navitems"></i><a href="../allproduct/products.php"  >Products</a></li>
                 <li><i class="fa-solid fa-users" class="navitems"></i><a href="../alluser/users.php">Users</a></li>
-                <li><i class="fa-solid fa-receipt" class="navitems"></i><a href="#">Orders</a></li>
-                <li><i class="fa-solid fa-money-check" class="navitems"></i><a href="#">Checks</a></li>
+                <li><i class="fa-solid fa-receipt" class="navitems"></i><a href="../allorders/orders.php">Orders</a></li>
+                <li><i class="fa-solid fa-money-check" class="navitems"></i><a href="../allchecks/checks.php">Checks</a></li>
             </ul>
         </nav>
 
