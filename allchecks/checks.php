@@ -151,7 +151,7 @@ $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <div class="login-picture">
-<img src="../alluser/uploads/ <?php echo $admin['ProfileImage']; ?>" alt="Profile">
+<img src="../alluser/uploads/<?php echo $admin['ProfileImage']; ?>" alt="Profile">
 </div>  
       <h2>Admin</h2>
     </div>

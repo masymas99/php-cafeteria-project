@@ -62,8 +62,19 @@
     </main>
 
     <div class="login-info">
-        <div class="login-picture"></div>
-        <h2>Admin</h2>
+    <?php
+require('../db.php');
+
+$query = "SELECT ProfileImage FROM users WHERE UserID=12";
+$stmt = $connection->prepare($query);
+$stmt->execute();
+$admin = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+
+<div class="login-picture">
+<img src="../alluser/uploads/<?php echo $admin['ProfileImage']; ?>" alt="Profile">
+</div>  
+      <h2>Admin</h2>
     </div>
 
     <div class="cart">

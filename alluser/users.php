@@ -47,7 +47,7 @@
 
             <div class="Addproduct-modal modal" id="Addproductmodal">
                 <div class="Addproduct-content">
-                <button class="close-modal" onclick="closeCart()">×</button>
+                    <button class="close-modal" onclick="closeCart()">×</button>
                     <h2>Add New user </h2>
                     <form action="register.php" method="POST" enctype="multipart/form-data">
                         <input type="text" name="name" required placeholder="User Name">
@@ -85,11 +85,11 @@
                         <h2><?php echo $user['UserName']; ?></h2>
                         <div class="room-info">
                             <h4>
-                            Room Number :   
+                                Room Number :
                             </h4>
                             <h3 class="Roomnumber"> <?php echo $user['RoomNumber']; ?></h3>
                         </div>
-                        
+
                         <div class="product-actions">
                         </div>
                         <div class="product-action">
@@ -129,12 +129,21 @@
     </main>
 
 
-
     <div class="login-info">
-        <div class="login-picture"></div>
+        <?php
+        require('../db.php');
+
+        $query = "SELECT ProfileImage FROM users WHERE UserID=12";
+        $stmt = $connection->prepare($query);
+        $stmt->execute();
+        $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+        ?>
+
+        <div class="login-picture">
+            <img src="../alluser/uploads/<?php echo $admin['ProfileImage']; ?>" alt="Profile">
+        </div>
         <h2>Admin</h2>
     </div>
-
 
     <script src="script.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->

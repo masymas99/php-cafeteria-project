@@ -152,6 +152,14 @@ main {
     background-color: #b85987;
 }
 
+.login-picture img{
+   
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
 /* ================================== Checkout Cards============================================*/
 .checks-container {
    display: flex;
@@ -244,7 +252,7 @@ main {
     justify-content: space-between;
     align-items: center;
     position: absolute;
-    top: -13px;
+    top: 5px;
     right: 84px;
     height: 10%;
     padding: 20px;
