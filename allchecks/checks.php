@@ -123,14 +123,16 @@
             <div class="order-info">
              <p>Order #<?php echo $check['OrderID']; ?></p> 
                 <p class="date"><?php echo date('Y-m-d H:i', strtotime($check['DateOrder'])); ?></p> <br>
-            <h4>Total: $<?php echo number_format($check['TotalPrice'], 2); ?></h4> <br> <br>
-            <a class="payment" onclick="return confirm('Are you sure you want to delete this product?');" href="deleteOrder.php?order_Id=<?php echo $check['OrderID']?>">Payment</a>
            
             </div>
         </div>
         <div class="check-details">
             <pre><?php echo htmlspecialchars($check['OrderDetails']); ?></pre>
         </div>
+        <h4>Total: $<?php echo number_format($check['TotalPrice'], 2); ?></h4> <br> <br>
+
+        <a class="payment" onclick="return confirm('Are you sure you want to delete this product?');" href="deleteOrder.php?order_Id=<?php echo $check['OrderID']?>">Payment</a>
+
     </div>
 </div>
                 <?php endforeach; ?>  
