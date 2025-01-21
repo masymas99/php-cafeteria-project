@@ -4,6 +4,7 @@ body{
     padding: 0;
     position: relative;
     height: 100%;
+    overflow-x: hidden;
 }
 
 html,
@@ -182,6 +183,7 @@ form  button{
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 
@@ -202,7 +204,6 @@ main{
     top: 86px;
     left: 223px;
     width: 1383px;
-    height: 100%;
     background-color: #f5f5f5;
     padding: 20px;
     border: #504c4c45 1px solid;
@@ -214,9 +215,8 @@ main{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
     height: auto;
-    margin: 20px;
+    margin-left: 120px ;
 }
 .product-card{
     display: flex;
