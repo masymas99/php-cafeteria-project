@@ -28,48 +28,80 @@ aside{
 nav ul{
     width: 200px;
 }
-nav ul li{
-    
+nav ul li {
+    position: relative;
+    margin: 16px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    border-radius: 18px;
     width: 150px;
     display: flex;
-    justify-content: flex-start;
-margin-top:20px  ;}
-
-
-nav ul li i{
-    
-    width: 5px;
-    margin-top: 3px;
-    color: rgb(86, 86, 86);
-
+    align-items: center;
 }
-nav ul li a{
-    margin-left: 53px;
-    display: flex;
+
+nav ul li i {
+    width: 25px;
+    color: rgb(86, 86, 86);
+    transition: all 0.3s ease;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
     color: rgb(86, 86, 86);
     font-size: 16px;
     font-weight: bold;
+    transition: all 0.3s ease;
 }
 
-nav ul li:hover{
-
+nav ul li:hover {
     background-color: #9B4B72;
-    color: white;
-    border-radius: 18px;
-    width: 150px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-nav ul li:hover i {
-    color: white; 
+    transform: translateX(10px);
+    box-shadow: 0 4px 8px rgba(155, 75, 114, 0.2);
 }
 
-nav ul li:hover a {
-    color: white; 
-    text-decoration: none; 
+nav ul li:hover::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: #9B4B72;
+    border-radius: 2px;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    transform-origin: top;
 }
+
+nav ul li:hover::before {
+    transform: scaleY(1);
+}
+
+nav ul li:hover i,
+nav ul li:hover a {
+    color: white;
+    transform: scale(1.05);
+}
+
+nav ul li:active {
+    transform: translateX(10px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(155, 75, 114, 0.1);
+}
+
+aside h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+aside h1:hover {
+    color: #9B4B72;
+}
+
 .vr1{
     height: 100%;
     position: absolute;

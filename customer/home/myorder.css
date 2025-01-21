@@ -33,22 +33,64 @@ aside nav ul {
 }
 
 aside nav ul li {
-    margin: 15px;
+    position: relative;
+    margin: 16px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    border-radius: 18px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+}
+
+aside nav ul li i {
+    width: 25px;
+    color: rgb(86, 86, 86);
+    transition: all 0.3s ease;
+    margin-right: 15px;
 }
 
 aside nav ul li a {
     text-decoration: none;
+    color: rgb(86, 86, 86);
     font-size: 16px;
-    color: #333;
+    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
-aside nav ul li a i {
-    width: 25px;
-    color: #666;
+aside nav ul li:hover {
+    background-color: #9B4B72;
+    transform: translateX(10px);
+    box-shadow: 0 4px 8px rgba(155, 75, 114, 0.2);
 }
 
-aside nav ul li a:hover {
-    color:rgb(206, 197, 201);
+aside nav ul li:hover::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: #9B4B72;
+    border-radius: 2px;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    transform-origin: top;
+}
+
+aside nav ul li:hover::before {
+    transform: scaleY(1);
+}
+
+aside nav ul li:hover i,
+aside nav ul li:hover a {
+    color: white;
+    transform: scale(1.05);
+}
+
+aside nav ul li:active {
+    transform: translateX(10px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(155, 75, 114, 0.1);
 }
 
 main {
