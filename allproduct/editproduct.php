@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             // تحديد مسار الصورة
-            $imagePath = './uploads/' . uniqid() . '-' . basename($image['name']);
+            $imagePath =  uniqid() . '-' . basename($image['name']);
             if (!move_uploaded_file($image['tmp_name'], $imagePath)) {
                 throw new Exception("Failed to upload image.");
             }

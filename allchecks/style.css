@@ -21,15 +21,15 @@ aside {
 
 aside h1 {
     text-align: center;
-    margin-bottom: 40px;
+    margin-top: 21px;
+    margin-bottom: 49px;
     color: black;
     font-size: 24px;
     font-weight: bold;
 }
-
 nav ul {
     list-style: none;
-    padding: 0px 0px 0px 40px;
+    padding: 0px;
 }
 
 nav ul li {
@@ -257,7 +257,10 @@ main {
   
 }
 .payment {
+    text-align: center;
+    align-self: center;
     text-decoration: none;
+    width: 20%;
     background-color: #9B4B72;
     padding: 8px 20px;
     color: white;

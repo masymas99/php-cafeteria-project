@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 mkdir($uploadDir, 0755, true); // إنشاء المجلد إذا لم يكن موجودًا
             }
 
-            $imagePath = './uploads/'. uniqid() . '-' . basename($image['name']); // تعيين المسار الكامل
+            $imagePath =  uniqid() . '-' . basename($image['name']); // تعيين المسار الكامل
             if (!move_uploaded_file($image['tmp_name'], $imagePath)) {
                 throw new Exception("Failed to upload image.");
             }

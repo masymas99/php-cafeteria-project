@@ -144,7 +144,7 @@
     <?php
 require('../db.php');
 
-$query = "SELECT ProfileImage FROM users WHERE UserID=12";
+$query = "SELECT ProfileImage FROM users WHERE role='admin'";
 $stmt = $connection->prepare($query);
 $stmt->execute();
 $admin = $stmt->fetch(PDO::FETCH_ASSOC);

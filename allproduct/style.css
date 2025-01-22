@@ -13,6 +13,7 @@ a{
 }
  ul{
     list-style: none;
+    padding: 0px;
     
 }
 
@@ -237,13 +238,13 @@ main{
     position: absolute;
     top: 6px;
     left: 203px;
-    font-size: 20px;
+    font-size: 16px;
     color: #9B4B72;
     margin-top: 10px;
 }
 .product-card h3{
     position: absolute;
-    top: 28px;
+    top: 40px;
 left: 204px;    font-size: 16px;
     color: #3F813C;
     margin-top: 12px;
@@ -255,7 +256,7 @@ left: 204px;    font-size: 16px;
     position: absolute;
     width: 130px;
     height: 105px;
-    top: 50px;
+    top: 60px;
     left: 211px;
     font-size: 13px;
     color: #504c4c;
