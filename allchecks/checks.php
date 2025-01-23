@@ -27,7 +27,6 @@
         <div class="container">
             <h1>Checks</h1>
             <h2>Filter Checks</h2>
-            <!-- فلاتر البحث -->
             <div class="filters">
                 <form method="GET" class="filter-form">
                     <div class="filter-group">
@@ -65,7 +64,6 @@
       
             <div class="checks-container">
                 <?php
-                // بناء استعلام SQL
                 $query = "
                     SELECT 
                         u.UserName,

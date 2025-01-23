@@ -73,7 +73,6 @@
                             </div>
                             <div class="order-products">
                                 <?php
-                                // استعلام لجلب جميع المنتجات الخاصة بهذا الأوردر
                                 $productQuery = "
                 SELECT p.ProductName, oi.Quantity, p.ProductImage, p.ProductDescription
                 FROM order_items oi

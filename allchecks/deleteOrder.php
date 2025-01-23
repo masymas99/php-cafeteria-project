@@ -5,13 +5,11 @@ if (isset($_GET['order_Id'])) {
     $orderId = $_GET['order_Id'];
 
     try {
-        // استعلام لحذف المنتج
         $query = "DELETE FROM `order` WHERE OrderID = :orderId";
         $statement = $connection->prepare($query);
         $statement->bindParam(':orderId', $orderId, PDO::PARAM_INT);
         $statement->execute();
 
-        // إعادة التوجيه إلى صفحة المنتجات
         header('Location: checks.php');
         exit;
     } catch (Exception $e) {

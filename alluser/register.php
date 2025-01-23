@@ -3,14 +3,12 @@ require('../db.php');
 
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // استلام البيانات من الفورم
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
     $confirmPassword = trim($_POST['confirm_password']);
     $roomNumber = trim($_POST['room_number']);
 
-    // التحقق من البيانات
     if (strlen($name) < 3) {
         $errors['name'] = 'Name must be at least 3 characters';
     }
@@ -31,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors['room_number'] = 'Please enter a valid room number';
     }
 
-    // إذا لم تكن هناك أخطاء، قم بمعالجة الصورة وحفظ البيانات
     if (empty($errors)) {
         if (isset($_FILES['user_image']) && $_FILES['user_image']['error'] == 0) {
             $uploadDir = 'uploads/';
