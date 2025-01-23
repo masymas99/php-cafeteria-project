@@ -20,11 +20,10 @@ try {
         throw new Exception('Invalid user ID');
     }
 
-    // بدء المعاملة
+    
     $connection->beginTransaction();
 
     try {
-        // إنشاء الطلب الرئيسي أولاً في جدول order
         $orderStmt = $connection->prepare('
             INSERT INTO `order` (UserID, DateOrder) 
             VALUES (:UserID, NOW())
@@ -33,13 +32,12 @@ try {
         $orderStmt->execute([':UserID' => $userId]);
         $orderId = $connection->lastInsertId();
 
-        // إضافة المنتجات إلى جدول order_items
         $itemStmt = $connection->prepare('
             INSERT INTO order_items (OrderID, ProductID, Quantity) 
             VALUES (:OrderID, :ProductID, :Quantity)
         ');
 
-        // إضافة كل منتج إلى الطلب
+        
         foreach ($productIds as $index => $productId) {
             $productId = intval($productId);
             $quantity = intval($quantities[$index]);
@@ -48,7 +46,7 @@ try {
                 throw new Exception('Invalid product data');
             }
 
-            // إضافة المنتج إلى order_items
+            
             $success = $itemStmt->execute([
                 ':OrderID' => $orderId,
                 ':ProductID' => $productId,
@@ -60,7 +58,7 @@ try {
             }
         }
 
-        // حساب وتحديث السعر الإجمالي للطلب
+        
         $updateTotalStmt = $connection->prepare('
             UPDATE `order` o
             SET TotalPrice = (
