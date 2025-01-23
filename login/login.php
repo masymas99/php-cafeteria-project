@@ -15,16 +15,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $UserEmail = trim($_POST['Email']);
     $UserPassword = trim($_POST['Password']);
 
-    // empty email or pass
     if (empty($UserEmail) || empty($UserPassword)) {
         $error_message = "Email and Password cannot be empty.";
     }
- // email format
     elseif (!filter_var($UserEmail, FILTER_VALIDATE_EMAIL)) {
         $error_message = "Invalid email format.";
     }
 
-   // Search email in db
     else {
         $stmt = $conn->prepare("SELECT * FROM Users WHERE Email = ?");
         $stmt->bind_param("s", $UserEmail);
@@ -34,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
 
-            //confirm admin
             if ($row['role'] === "admin") {
                 if ($UserPassword === $row['Password']) {
                     $_SESSION['user'] = $UserEmail;
@@ -47,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
 
-         // match user pass
             elseif ($UserPassword === $row['Password']) {
                 $_SESSION['user'] = $UserEmail;
                 $_SESSION['role'] = "user";

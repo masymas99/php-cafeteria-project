@@ -135,7 +135,7 @@ main {
 
 .orders-container {
     display: flex; 
-    flex-wrap: nowrap; 
+    flex-wrap: wrap; 
     gap: 20px; 
     padding: 20px;
     background-color: rgba(148, 148, 145, 0.257);
@@ -175,6 +175,7 @@ main {
 
 .order-products {
     flex-grow: 1; 
+    position: relative;
 }
 
 .product-data {
@@ -213,10 +214,14 @@ main {
 }
 
 .order-total {
-    text-align: right;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
-}
+   
+        text-align: right;
+        position: absolute;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+        bottom: 0;
+        right: 0;
+    }
 
 .order-total h4 {
     color: rgba(63, 129, 60, 1);

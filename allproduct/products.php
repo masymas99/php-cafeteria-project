@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https:
-    <link rel="preconnect" href="https:
-    <link rel="preconnect" href="https:
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- boot strab -->
-    <!-- <link href="https:
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
     <link
-        href="https:
+        href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@200..1000&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <title>Admin Dashboard</title>
 </head>
@@ -119,28 +119,35 @@
                 </form>
             </div>
         </div>
+        <!-- نافذة تعديل المنتج -->
         <div class="Editproduct-modal" id="Editproductmodal">
             <div class="Editproduct-content">
                 <button class="close-modal" onclick="closeEditModal()">×</button>
                 <h2>Edit Product</h2>
                 <form action="editproduct.php" method="post" enctype="multipart/form-data">
+                    <!-- Hidden input for Product ID -->
                     <input type="hidden" name="product_id" id="edit_product_id">
 
+                    <!-- Product Name -->
                     <label for="edit_product_name">Product Name</label>
                     <input class="form-control" type="text" name="product_name" id="edit_product_name" required>
 
+                    <!-- Product Price -->
                     <label for="edit_product_price">Price</label>
                     <input class="form-control" type="number" name="price" id="edit_product_price" min="0" step="0.01"
                         required>
 
+                    <!-- Product Description -->
                     <label for="edit_product_description">Product Description</label>
                     <textarea class="form-control" name="product_description" id="edit_product_description" rows="4"
                         required></textarea>
 
+                    <!-- Product Image -->
                     <label for="edit_product_image">Product Image</label>
                     <input class="form-control" type="file" name="product_image" id="edit_product_image"
                         accept="image/*">
 
+                    <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary">Update Product</button>
                 </form>
             </div>
@@ -166,7 +173,7 @@ $admin = $stmt->fetch(PDO::FETCH_ASSOC);
     </div>
 
     <script src="script.js"></script>
-    <!-- <script src="https:
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 </body>
 
 </html>
